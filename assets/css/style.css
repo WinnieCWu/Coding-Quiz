@@ -1,0 +1,5 @@
+/* align time counter on upper right
+center the Coding Challenge questions and answer options*/
+main {
+    text-align: center;
+}
