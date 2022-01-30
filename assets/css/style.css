@@ -2,4 +2,19 @@
 center the Coding Challenge questions and answer options*/
 main {
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#yourFinalScore {
+    display: none;
+} 
+
+#viewHighScores {
+    display: none;
+}
+
+nav p{
+    float: right;
+    margin:10px;
 }

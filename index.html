@@ -10,15 +10,40 @@
 </head>
 <body>
     <nav>
-        <button id="viewHighScores"> View High Scores </button>
+        <button id="viewHighScore"> View High Scores </button>
         <!-- time: ## (on upper right)-->
+        <!-- when StartQuiz button is clicked, timer starts at 75-->
+        <p class="timer"> Time:  </p>
     </nav>
     <main>
+        <div class="container">
         <h1> Coding Challenge </h1>
         <h2> Try to answer the following code-related questions within the time limit.<br>
             Keep in mind that incorrect answers will penalize your score/time<br>
             by ten seconds!<br></h2>
-    <button id="start-quiz-button" class="btn"> Start Quiz </button>
+            <div class="StartQuiz">
+            <button id="start-quiz-button" class="btn"> Start Quiz </button>
+            <a href=""><!--add js file here too?--></a>
+            </div>
+        </div>
+    <!-- hidden results page until down answering questions and presented with .yourFinalScore and prompt for Initials
+    <section id = "yourFinalScore">
+        <h3> All done! </h3>
+        //with capability to enter your final score
+        //and section for input text and button to submit
+        <input
+        <button id="submitInitials" class="btn"> Submit </button>
+    </section> 
+    -->
+
+    <!--
+    <section id = "viewHighScores">
+        ///two buttons: Go back && Clear high scores (in same row, hush to the left)
+        <button id="goBack" class="btn"> Go back</button>
+        <button id="clearHighScores" class="btn"> Clear high scores </button>
+    </section>
+    -->
+   
     </main>
   
 
