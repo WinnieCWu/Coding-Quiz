@@ -10,88 +10,90 @@ var timeInterval = setInterval(function(){
     setInterval();
 
 });
-//onClick of Start Button, lead the function of arrayOfQuestions
+/*
+onClick of Start Button, lead the function of arrayOfQuestions for jQuery
 $("#start-quiz-button").click(function() {
-    
-})
+    askQuestion();
+});
+*/
+
+startQuiz.addEventListener('click', function() {
+    askQuestions();
+});
+
+var askQuestions = function (){
+    //will show each question and its 4 optiosn
+    var choicesArray = arrayOfQuestions[i].question.choices;
+    var ulEl = createElement('ul');
+
+    // loop over the array of choices
+    for (let i = 0; i < choicesArray.length; i++) {
+        // create an html element like 'li'
+        var liEl = document.createElement('li');
+        // assign the choices array answer to the new li element using textContent
+        liEl.textContent = choicesArray[i];
+        // append liEl to ulEl
+        ulEl.appendChild(liEl);
+    }
+}
 
 var arrayOfQuestions = [ //add on footer if selector is right/wrong
     {
         // object/ question 1
-        question: 'Commonly used data types DO Not include:';
+        question: 'Commonly used data types DO Not include:',
         choices: [
             'strings',
             'booleans',
             'alerts',
             'numbers',
-        ]
-        correctAnswer: 'alerts'
+        ],
+        correctAnswer: 'alerts',
     },
     {
         // object/ question 2
-        question: 'The condition in an if/else statement is enclosed with _______.';
+        question: 'The condition in an if/else statement is enclosed with _______.',
         choices: [
             'quotes',
             'curly brackets',
             'parenthesis',
             'square brackets',    
-        ]
-        correctAnswer: 'curly brackets'
+        ],
+        correctAnswer: 'curly brackets',
     },
     {
         // object/ question 3
-        question: 'Arrays in JavaScript can be used to store _______.';
+        question: 'Arrays in JavaScript can be used to store _______.',
         choices: [
             'numbers and strings',
             'other arrays',
             'booleans',
             'all of the above',    
-        ]
-        correctAnswer: 'all of the above;'
+        ],
+        correctAnswer: 'all of the above',
     }, 
     {
         // object/ question 4
-        question: 'String values must be enclosed within _______ when being assigned to variables.';
+        question: 'String values must be enclosed within _______ when being assigned to variables.',
         choices: [
             'commas',
             'curly brackets',
             'quotes',
             'parenthesis',
-        ]
-        correctAnswer" 'curly brackets'
+        ],
+        correctAnswer: 'curly brackets',
     },
     {
         // object/ question 5
-        question: 'A very useful tool used during development and debugging for printing content to the debugger is:';
+        question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
         choices: [
             'JavaScript',
             'terminal/bash',
             'for loops',
             'console.log',
-        ]
-        correctAnswer" 'console.log'
+        ],
+        correctAnswer: 'console.log',
     }
-]
-
-function askQuestion (){
-    var askQuestions = 
-}
-
-console.log(arrayOfQuestions[0].question);
-var choicesArray = arrayOfQuestions[0].choices;
-var ulEl = createElement('ul');
-
-// loop over the array of choices
-for (let i = 0; i < choicesArray.length; i++) {
-    // create an html element like 'li'
-    var liEl = document.createElement('li');
-    // assign the choices array answer to the new li element using textContent
-    liEl.textContent = choicesArray[i];
-    // append liEl to ulEl
-    ulEl.appendChild(liEl);
-}
-
-startQuiz.addEventListener("click", arrayOfQuestions)
+];
 
 //Create a footer section with thin line immediately after the last question
 //build capability to capture in the footer if the selected response is 'Correct!' or 'Wrong!'
