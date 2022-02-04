@@ -1,15 +1,9 @@
-var startQuiz = document.querySelector('#startQuizButton')
+var startQuiz = document.querySelector('#start-quiz-button')
+var timerEl = document.querySelector('#timer')
+var start = document.querySelector('#start')
 
-var timeInterval = setInterval(function(){
-    //subtract 1 every second
-    count--;
-    if (count ===0) {
-        //quiz ends and current score appears
-    }
-    //if answer is incorrect, subtract 10 seconds from current time
-    setInterval();
+var timer = 60;
 
-});
 /*
 onClick of Start Button, lead the function of arrayOfQuestions for jQuery
 $("#start-quiz-button").click(function() {
@@ -18,24 +12,76 @@ $("#start-quiz-button").click(function() {
 */
 
 startQuiz.addEventListener('click', function() {
+    setInterval(function(){ 
+        timer--;
+        timerEl.textContent = timer
+    }, 1000);
+    start.classList.add('hide')
     askQuestions();
+    //stop the timer once it reaches 0
 });
 
-var askQuestions = function (){
-    //will show each question and its 4 optiosn
-    var choicesArray = arrayOfQuestions[i].question.choices;
-    var ulEl = createElement('ul');
+var askQuestions = function () {
 
-    // loop over the array of choices
-    for (let i = 0; i < choicesArray.length; i++) {
-        // create an html element like 'li'
-        var liEl = document.createElement('li');
-        // assign the choices array answer to the new li element using textContent
-        liEl.textContent = choicesArray[i];
-        // append liEl to ulEl
-        ulEl.appendChild(liEl);
+    var containerEl = document.querySelector('#container')
+
+    for (let i = 0; i < arrayOfQuestions.length; i++) {
+
+    // create question html div, and adding question text
+    var questionEl = document.createElement('div')
+    var question = arrayOfQuestions[i].question;
+    questionEl.textContent = question
+    containerEl.appendChild(questionEl)
+    
+
+    // create choices html div, and add choices text
+    var choicesEl = document.createElement('div')
+    var choices = arrayOfQuestions[i].choices;
+    var choicesOl = document.createElement('ol')
+    var choicesLi = document.createElement('li')
+    //var choicesLi2 = document.createElement('li')
+
+        choicesLi.textContent = choices[i]
+        //choicesLi2.textContent = choices[1]
+        choicesOl.appendChild(choicesLi)
+        //choicesOl.appendChild(choicesLi2)
+        choicesEl.appendChild(choicesOl)
+        //containerEl.appendChild(questionEl)
+        containerEl.appendChild(choicesEl)
+        
+       arrayOfQuestions[arrayOfQuestions.length-1]
+
     }
-}
+    //will show each question and its 4 optiosn
+    
+    //listen for the click for 'answerSelected', and populate if correct or wrong on the footer. if wrong, decrease timer by 10
+    // answerSelected.addEventListener('click', function() {
+    //     for (let i = 0; i < choicesArray.length; i++) {
+    //         if (answerSelected === false) //(write the proper code) {
+    //             //populate  in footer <p class "wrong">
+    //             wrongEl.textContent="Wrong!"
+    //             } else {
+    //                 //populate in footer <p class "correct"
+    //                 correctEl.textContent="Correct!"
+    //             }
+    //         }
+    //         $.get("footer.html", function(response){
+    //             $('footer').html(response);
+    //         });  
+
+    // var ulEl = createElement('ul');
+
+    // // loop over the array of choices
+    // for (let i = 0; i < choicesArray.length; i++) {
+    //     // create an html element like 'li'
+    //     var liEl = document.createElement('li');
+    //     // assign the choices array answer to the new li element using textContent
+    //     liEl.textContent = choicesArray[i];
+    //     // append liEl to ulEl
+    //     ulEl.appendChild(liEl);
+    // }
+};
+ 
 
 var arrayOfQuestions = [ //add on footer if selector is right/wrong
     {
@@ -99,16 +145,18 @@ var arrayOfQuestions = [ //add on footer if selector is right/wrong
 //build capability to capture in the footer if the selected response is 'Correct!' or 'Wrong!'
 //and when answer is selected, change button color to brighter color
 
-var resultsPage = document.querySelector('#yourFinalScore')
+var yourFinalScoreEl = document.querySelector('#yourFinalScore');
 //dynamically input 'Your final score is XX.', with XX being user's current score
-//after the text Enter Initials:, build a <textarea> for user to input initials to submit
+document.querySelector("#yourFinalScore")
+var finalScoreEl = document.createElement('initials');
+//after the text Enter Initials:, build a <textarea> for user to input initials to submit initialEl
+document.textContent.
+onClick()
 
-var highScoreRank = document.querySelector ('#viewHighScores')
+var viewHighScoresEl = document.querySelector('#viewHighScores');
 //include 'Initials-Value of high score
 //two buttons: Go back && Clear high scores
 
 //when StartQuiz button is clicked, timer starts at 75
 //then it subtracts by 10 if selected answer is wrong
 //timer stops when all questions are answered
-
-

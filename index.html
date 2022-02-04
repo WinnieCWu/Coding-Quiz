@@ -13,39 +13,41 @@
         <button id="viewHighScore"> View High Scores </button>
         <!-- time: ## (on upper right)-->
         <!-- when StartQuiz button is clicked, timer starts at 75-->
-        <p class="timer"> Time:  </p>
+        <p> Time: <span id="timer">60</span> seconds </p>
     </nav>
     <main>
-        <div class="container">
-        <h1> Coding Challenge </h1>
-        <h2> Try to answer the following code-related questions within the time limit.<br>
-            Keep in mind that incorrect answers will penalize your score/time<br>
-            by ten seconds!<br></h2>
-            <div class="StartQuiz">
-            <button id="start-quiz-button" class="btn"> Start Quiz </button>
-            <a href=""><!--add js file here too?--></a>
+        <div id="container">
+            <div id="start">
+                <h1> Coding Challenge </h1>
+                <h2> Try to answer the following code-related questions within the time limit.<br>
+                Keep in mind that incorrect answers will penalize your score/time<br>
+                by ten seconds!<br></h2>
+                <div class="StartQuiz">
+                    <button id="start-quiz-button" class="btn"> Start Quiz </button>
+                </div>
+        
             </div>
         </div>
-    <!-- hidden results page until down answering questions and presented with .yourFinalScore and prompt for Initials
-    <section id = "yourFinalScore">
-        <h3> All done! </h3>
-        //with capability to enter your final score
-        //and section for input text and button to submit
-        <input
-        <button id="submitInitials" class="btn"> Submit </button>
-    </section> 
-    -->
 
-    <!--
-    <section id = "viewHighScores">
-        ///two buttons: Go back && Clear high scores (in same row, hush to the left)
-        <button id="goBack" class="btn"> Go back</button>
-        <button id="clearHighScores" class="btn"> Clear high scores </button>
-    </section>
-    -->
-   
+        <div id="footer">
+            <p class="Wrong"> Wrong! </p>
+            <p class="Correct"> Correct </p>
+        </div>
+
+        <div id="yourFinalScore">
+            <h3> All done! </h3>
+            <p> Your final score is <span class="finalScore"> score number.</p>
+            <label for="enter-initials">Enter initials:</label>
+            <input type="text" name="enter-initials" id="enter-initials" placeholder="Please enter your initials" />
+            <button id="submitInitials" class="btn"> Submit </button>
+        </div>
+
+        <div id="viewHighScores">
+            <button id="goBack" class="btn"> Go back</button>
+            <button id="clearHighScores" class="btn"> Clear high scores </button>
+        </div>
+
     </main>
-  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -64,6 +66,3 @@ question is bold and centered
 4 options, when hover over, is a different color 
 will tell if right or wrong below-->
 
-<!-- questions
-1. commonly used data types DO NOT include: 
-arrays in Javascript can be-->
