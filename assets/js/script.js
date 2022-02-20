@@ -12,6 +12,7 @@ var quizAnswerThree
 var quizAnswerFour
 var i = 0
 var topHighScoreName
+var highScore
 
 /*
 onClick of Start Button, lead the function of arrayOfQuestions for jQuery
@@ -85,19 +86,11 @@ var questionsAndAnswers = [ //add on footer if selector is right/wrong
 
 //appending the questions and answer elements
 var askQuestions = function () {
-
-/*
-    for (let i = 0; i < questionsAndAnswers.length; i++) {
-        document.getElementById(questionsAndAnswers[i].questions + "<br/>");
-        for (let j = 0; j < questionsAndAnswers[i].choices.length; j++) {
-        document.getElementById(questionsAndAnswers[i].choices[j] + "<br/>");
-*/
-
 // create question html div, and adding question text 
     quizQuestion = document.createElement('h2');
     quizQuestion.className = "quiz-question";
     quizQuestion = questionsAndAnswers[i].question;
-    quizQuestion.textContent = question;
+    quizQuestion.textContent = questionsAndAnswers[i].question;
     quizBox.appendChild(quizQuestion);
 
     quizAnswerBox = document.createElement('ul');
@@ -135,6 +128,7 @@ var askQuestions = function () {
        i++;
        nextQuestions()
     };
+};
 
 //update and display next questions
 var nextQuestions = function() {
@@ -164,21 +158,21 @@ var stopQuiz = function() {
     initialsEl.textContent= 'Please enter your initials to save your score:'
     quizBox.appendChild(intialsEl);
 
-    var userNameInput = document.createElement("input")
+    var userNameInput = document.createElement("input");
     userNameInput.setAttribute("type", "text");
-    userNameInput.setAttribute("id", "user-initials")
-    userNameInput.className="input-box"
+    userNameInput.setAttribute("id", "user-initials");
+    userNameInput.className="input-box";
     quizBox.appendChild(userNameInput);
 
-    var submitUserInfo = document.createElement("btn";
-    submitUserInfo.className = "submitInitials"
+    var submitUserInfo = document.createElement("btn");
+    submitUserInfo.className = "submitInitials";
     submitUserInfo.textContent = "Submit!";
     
     quizBox.appendChild(submitUserInfo);
 
 
     var viewHighScoresEl = document.querySelector('#viewHighScores');
-    viewHighScoresEl.textContent="View High Scores"
+    viewHighScoresEl.textContent="View High Scores";
     
     var viewHighScores = viewHighScores.addEventListener('click', function() {
   });
@@ -198,11 +192,12 @@ var scoringFunction = function () {
     } else {
         topHighScoreName = "";
     }
+    //JSON.stringify(topHighScore);
 };
 
 JSON.stringify(userScore);
-JSON.stringify(highScore);
-JSON.stringify(topHighScore);
+//JSON.stringify(highScore);
+
 
 var saveHighScores = function() {
     localStorage.getItem("highScore")
