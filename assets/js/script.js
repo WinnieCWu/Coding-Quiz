@@ -3,13 +3,16 @@ var startQuiz = document.querySelector('#start-quiz-button')
 var timerEl = document.querySelector('#timer')
 var start = document.querySelector('#start')
 var timer = 60;
+var userScore = 0
 var quizBox = document.querySelector(".quiz-box")
 var quizQuestion
 var quizAnswerOne
 var quizAnswerTwo
 var quizAnswerThree
 var quizAnswerFour
-var userScore = 0
+var i = 0
+var topHighScoreName
+
 /*
 onClick of Start Button, lead the function of arrayOfQuestions for jQuery
 $("#start-quiz-button").click(function() {
@@ -21,18 +24,19 @@ startQuiz.addEventListener('click', startCount);
  
 function startCount() {
     //putting in the countdown
-
     var timeInterval = setInterval(function(){ 
         if (timer >= 1) {
             timer--;
             timerEl.textContent = timer
+            //stop the timer once it reaches 0
         } if (timer === 0){
-            clearInterval(timerInterval);
+            clearInterval(timeInterval);
+            timer.textContent = "Game Over!"
         }
+        //execute a function ever 1000milliseconds
     }, 1000);
     start.classList.add('hide')
     askQuestions();
-    //stop the timer once it reaches 0
 };
 
 var questionsAndAnswers = [ //add on footer if selector is right/wrong
@@ -82,12 +86,13 @@ var questionsAndAnswers = [ //add on footer if selector is right/wrong
 //appending the questions and answer elements
 var askQuestions = function () {
 
-
+/*
     for (let i = 0; i < questionsAndAnswers.length; i++) {
         document.getElementById(questionsAndAnswers[i].questions + "<br/>");
         for (let j = 0; j < questionsAndAnswers[i].choices.length; j++) {
         document.getElementById(questionsAndAnswers[i].choices[j] + "<br/>");
-    
+*/
+
 // create question html div, and adding question text 
     quizQuestion = document.createElement('h2');
     quizQuestion.className = "quiz-question";
@@ -118,38 +123,93 @@ var askQuestions = function () {
     quizAnswerThree.addEventListener('click', answerCheck);
     quizAnswerFour.addEventListener('click', answerCheck);
 
-   
-//set attribute so other question and choice sets are hidden (data state), and visible after the previous click
+   var answerCheck = function(event) {
+       if (event.target.textContent === questionsAndAnswers[i].correctAnswer) {
+           userScore = timer + userScore;
+           quizQuestion.textContent = "Correct!";
+       } else {
+           //if incorrect answer, deduct 10 sec
+           timer = timer - 10;
+           quizQuestion.textContent = "Wrong!"
+       }
+       i++;
+       nextQuestions()
+    };
 
-viewHighScores.addEventListener('click', function() {
-    start.classList.add('hide')
-    askQuestions();
-    //stop the timer once it reaches 0
-});
+//update and display next questions
+var nextQuestions = function() {
+    if (i < questionsAndAnswers.length) {
+        quizQuestion.textContent = questionsAndAnswers[i].question;
+        quizAnswerOne.textContent = questionsAndAnswers[i].answerOne;
+        quizAnswerTwo.textContent = questionsAndAnswers[i].answerTwo;
+        quizAnswerThree.textContent = questionsAndAnswers[i].answeFour;
+    } else {
+        stopQuiz();
+    }
+};
+
+//stop the quiz
+var stopQuiz = function() {
+    quizAnswerOne.remove();
+    quizAnswerTwo.remove();
+    quizAnswerThree.remove();
+    quizAnswerFour.remove();
+    clearInterval(timeInterval);
+
+    quizQuestion.textContent = `You scored ${userScore} points!`
+
+    finalScoreEl.classList.remove('hide');
+
+    var initialsEl = document.querySelector('.input-initials');
+    initialsEl.textContent= 'Please enter your initials to save your score:'
+    quizBox.appendChild(intialsEl);
+
+    var userNameInput = document.createElement("input")
+    userNameInput.setAttribute("type", "text");
+    userNameInput.setAttribute("id", "user-initials")
+    userNameInput.className="input-box"
+    quizBox.appendChild(userNameInput);
+
+    var submitUserInfo = document.createElement("btn";
+    submitUserInfo.className = "submitInitials"
+    submitUserInfo.textContent = "Submit!";
+    
+    quizBox.appendChild(submitUserInfo);
+
+
+    var viewHighScoresEl = document.querySelector('#viewHighScores');
+    viewHighScoresEl.textContent="View High Scores"
+    
+    var viewHighScores = viewHighScores.addEventListener('click', function() {
+  });
+};
 //Create a footer section with thin line immediately after the last question
 //build capability to capture in the footer if the selected response is 'Correct!' or 'Wrong!'
 //and when answer is selected, change button color to brighter color
-
-var yourFinalScoreEl = document.querySelector('#yourFinalScore');
-yourFinalScoreEl.textContent = finalScore
-yourFinalScore.appendChild('yourFinalScoreEl')
-
-var finalScoreEl = document.createElement('p');
-
-
-var initials = document.querySelector('.enter-initials');
-finalScoreEl.textcontent= initials
-yourFinalScore.appendChild('initials')
-//after the text Enter Initials:, build a <textarea> for user to input initials to submit initialEl
-//document.textContent.
-//onClick()
-var viewHighScoresEl = document.querySelector('#viewHighScores');
-viewHighScoresEl.textContent=""
+//add button to 'go back' or 'clear history'
 
 //checking local storage for current high schore
-var highScore = localStorage.getItem("highScore")
-if (highScore) {
-    highScore = 0
-} else {
-    highScore= parseInt(highScore);
+
+var scoringFunction = function () {
+    //check if userScore is > current highest score
+    if (userScore > highScore) {
+        highScore = userScore;
+        topHighScoreName = userNameInput.value(trim);
+    } else {
+        topHighScoreName = "";
+    }
 };
+
+JSON.stringify(userScore);
+JSON.stringify(highScore);
+JSON.stringify(topHighScore);
+
+var saveHighScores = function() {
+    localStorage.getItem("highScore")
+    if (highScore) {
+        highScore = 0
+    } else {
+        highScore= parseInt(highScore);
+    };
+}
+askQuestions();
