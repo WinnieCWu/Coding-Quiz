@@ -87,9 +87,8 @@ var questionsAndAnswers = [ //add on footer if selector is right/wrong
 //appending the questions and answer elements
 var askQuestions = function () {
 // create question html div, and adding question text 
-    quizQuestion = document.createElement('h2');
+    quizQuestion = document.createElement('h3');
     quizQuestion.className = "quiz-question";
-    quizQuestion = questionsAndAnswers[i].question;
     quizQuestion.textContent = questionsAndAnswers[i].question;
     quizBox.appendChild(quizQuestion);
 
