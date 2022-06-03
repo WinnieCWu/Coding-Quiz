@@ -1,3 +1,32 @@
+// list of all questions, choices, and answers
+var questions = [ 
+  {   // object/ question 1
+      title: 'Commonly used data types DO Not include:',
+      choices: ['strings', 'booleans', 'alerts', 'numbers'],
+      answer: 'alerts'
+  },
+  {   // object/ question 2
+      title: 'The condition in an if/else statement is enclosed with _______.',
+      choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'], 
+      answer: 'curly brackets'
+  },
+  {   // object/ question 3
+      title: 'Arrays in JavaScript can be used to store _______.',
+      choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],    
+      answer: 'all of the above'
+  }, 
+  {   // object/ question 4
+      title: 'String values must be enclosed within _______ when being assigned to variables.',
+      choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
+      answer: 'curly brackets'
+  },
+  {    // object/ question 5
+      title: 'A very useful tool used during development and debugging for printing content to the debugger is:',
+      choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
+      answer: 'console.log'
+  }
+];
+
 // variables to keep track of quiz state
 var currentQuestionIndex = 0;
 var time = questions.length * 15;
@@ -36,7 +65,7 @@ function startQuiz() {
     // update title with current question
     var titleEl = document.getElementById("question-title");
     titleEl.textContent = currentQuestion.title;
-  
+    
     // clear out any old question choices
     choicesEl.innerHTML = "";
   
@@ -56,6 +85,7 @@ function startQuiz() {
       choicesEl.appendChild(choiceNode);
     });
   }
+
   
   function questionClick() {
     // check if user guessed wrong
@@ -66,17 +96,12 @@ function startQuiz() {
       if (time < 0) {
         time = 0;
       }
-  
+
       // display new time on page
       timerEl.textContent = time;
   
-      // play "wrong" sound effect
-      sfxWrong.play();
-  
       feedbackEl.textContent = "Wrong!";
     } else {
-      // play "right" sound effect
-      sfxRight.play();
   
       feedbackEl.textContent = "Correct!";
     }
@@ -124,6 +149,7 @@ function startQuiz() {
       quizEnd();
     }
   }
+  
   
   function saveHighscore() {
     // get value of input box
