@@ -1,5 +1,5 @@
 // Declared variables
-var highScores = document.querySelector("#highscores");
+var highscores = document.querySelector("#highscores");
 var clear = document.querySelector("#clear");
 var goBack = document.querySelector("#goBack");
 
