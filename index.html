@@ -10,36 +10,37 @@
 </head>
 <body>
     <nav>
-        <button id="viewHighScore"> View High Scores </button>
+        <button id="viewHighScore"> <a href="highscores.html">View Highscores</a> </button>
         <!-- time: ## (on upper right)-->
         <!-- when StartQuiz button is clicked, timer starts at 75-->
-        <p> Time: <span id="timer">60</span> seconds </p>
+        <div class="timer">Time: <span id="time">0</span> seconds </div>
     </nav>
-    <main class="quiz-box">
-        <div id="start">
-            <h1> Welcome to the Coding Quiz Challenge </h1>
+
+    <body class="quiz-box">
+        <div id="start-screen" class="start">
+            <h1> Welcome to the Coding Quiz Challenge! </h1>
             <h2> Test your coding knowledge by answering the following questions within the time limit.
                 Keep in mind that incorrect answers will deduct your time
-                by ten seconds!</h2>
-            <div class="StartQuiz">
-                <button id="start-quiz-button" class="btn"> Start Quiz! </button>
-            </div>
+                by ten seconds! Good luck!</h2>
+            <button id="start"> Start Quiz! </button>
         </div>
     
-        <div id="yourFinalScore">
+        <div id="questions" class="hide">
+            <h2 id="question-title"></h2>
+            <div id="choices" class="choices"></div>
+        </div>
+    
+        <div id="end-screen" class="hide">
             <h3> All done! </h3>
-            <p> Your final score is <span class="finalScore"></span> score number.</p>
+            <p> Your final score is <span class="final-score"></span>.</p>
             <label for="enter-initials" class="enter-intials">Enter initials to save your score: <span class="input-initials"></span></label>
-            <input type="text" name="enter-initials" id="enter-initials" placeholder="Please enter your initials" />
-            <button id="submitInitials" class="btn"> Submit </button>
+            <input type="text" id="initials" max="3" />
+            <button id="submit"> Submit </button>
         </div>
 
-        <div id="viewHighScores">
-            <button id="goBack" class="btn"> Go back</button>
-            <button id="clearHighScores" class="btn"> Clear high scores </button>
+        <div id="feedback" class="feedback hide"></div>
         </div>
 
-    </main>
     <footer> 
         <p class="footer-text">&copy by <a class="footer-link" href="https://github.com/WinnieCWu/"> Winnie C. Wu </a></p>
     </footer>

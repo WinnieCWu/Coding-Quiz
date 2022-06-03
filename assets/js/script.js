@@ -5,24 +5,18 @@ var start = document.querySelector('#start')
 var timer = 60;
 var userScore = 0
 var quizBox = document.querySelector(".quiz-box")
-var quizQuestion
-var quizAnswerOne
-var quizAnswerTwo
-var quizAnswerThree
-var quizAnswerFour
+var question
+var choices
+var answer
 var i = 0
 var topHighScoreName
 var highScore
 
-/*
-onClick of Start Button, lead the function of arrayOfQuestions for jQuery
-$("#start-quiz-button").click(function() {
-    askQuestion();
-});
-*/
 
 startQuiz.addEventListener('click', startCount);
- 
+
+console.log(localStorage.getItem("scores"));
+
 function startCount() {
     //putting in the countdown
     var timeInterval = setInterval(function(){ 
@@ -43,46 +37,30 @@ function startCount() {
 var questionsAndAnswers = [ //add on footer if selector is right/wrong
     {   // object/ question 1
         question: 'Commonly used data types DO Not include:',
-        answerOne: 'strings',
-        answerTwo: 'booleans',
-        answerThree: 'alerts',
-        answerFour: 'numbers',
-        correctAnswer: 'alerts',
+        choices: ['strings', 'booleans', 'alerts', 'numbers'],
+        answer: 'alerts'
     },
     {   // object/ question 2
         question: 'The condition in an if/else statement is enclosed with _______.',
-        answerOne: 'quotes',
-        answerTwo: 'curly brackets',
-        answerThree: 'parenthesis',
-        answerFour: 'square brackets',    
-        correctAnswer: 'curly brackets',
+        choices: ['quotes', 'curly brackets', 'parenthesis', 'square brackets'], 
+        answer: 'curly brackets'
     },
     {   // object/ question 3
         question: 'Arrays in JavaScript can be used to store _______.',
-        answerOne: 'numbers and strings',
-        answerTwo: 'other arrays',
-        answerThree: 'booleans',
-        answerFour: 'all of the above',    
-        correctAnswer: 'all of the above',
+        choices: ['numbers and strings', 'other arrays', 'booleans', 'all of the above'],    
+        answer: 'all of the above'
     }, 
     {   // object/ question 4
         question: 'String values must be enclosed within _______ when being assigned to variables.',
-        answerOne: 'commas',
-        answerTwo: 'curly brackets',
-        answerThree: 'quotes',
-        answerFour: 'parenthesis',
-        correctAnswer: 'curly brackets',
+        choices: ['commas', 'curly brackets', 'quotes', 'parenthesis'],
+        answer: 'curly brackets'
     },
     {    // object/ question 5
         question: 'A very useful tool used during development and debugging for printing content to the debugger is:',
-        answerOne: 'JavaScript',
-        answerTwo: 'terminal/bash',
-        answerThree: 'for loops',
-        answerFour: 'console.log',
-        correctAnswer: 'console.log',
+        choices: ['JavaScript', 'terminal/bash', 'for loops', 'console.log'],
+        answer: 'console.log'
     }
 ];
-
 
 //appending the questions and answer elements
 var askQuestions = function () {
@@ -197,9 +175,19 @@ var scoringFunction = function () {
 JSON.stringify(userScore);
 //JSON.stringify(highScore);
 
+const scoresArray =[{"userInitials", userScore}, {"userInitials", userScore},...];
+    //ie [{WW:30}, {CMS:27}]
+let highScoresString
 
 var saveHighScores = function() {
-    localStorage.getItem("highScore")
+    localStorage.setInput("userInitials", timerValue)
+    localStorage.setItem("userScore", score)
+    localStorage.setItem("userInitials", "userScore");
+    localStorage.getItem("userInitials");
+    JSON.stringify(scoresArray);  
+    document.getElementById("div").innerHTML="highScoresString";
+    
+    
     if (highScore) {
         highScore = 0
     } else {
