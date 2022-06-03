@@ -10,9 +10,7 @@
 </head>
 <body>
     <nav>
-        <button id="viewHighScore"> <a href="highscores.html">View Highscores</a> </button>
-        <!-- time: ## (on upper right)-->
-        <!-- when StartQuiz button is clicked, timer starts at 75-->
+        <button id="scores"> <a href="highscores.html">View Highscores</a> </button>
         <div class="timer">Time: <span id="time">0</span> seconds </div>
     </nav>
 
@@ -47,18 +45,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+    
+    <script src="./assets/js/questions.js"></script>
+    <script src="./assets/js/scores.js"></script>
+    <script src="assets/js/logic.js"></script>
 </body>
 </html>
-<!--goal: take a timed quiz on JS fundamental that stores high scores
-click start button -> time starts and is presented with a q
-when answer q -> presented with another q
-when answer incorrectly, time is subtracted from clock
-when all q are answered or time reaches 0, game is over
-when game is over, user can save initial and score, then click submit
-can 'view high scores' on upper left, and time shows on upper right
-question is bold and centered
-4 options, when hover over, is a different color 
-will tell if right or wrong below-->
-<!--have pointer hand, to click on answer option-->
 
